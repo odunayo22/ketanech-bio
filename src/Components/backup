@@ -1,0 +1,4 @@
+ <video  controls loop={true}  autoPlay={true}  poster="assets/images/control1.jpg" width="350px" height="250px" preload="metadata">
+                        <source src ="assets/images/preview.mp4" type="video/mp4" /> 
+                            
+                        </video>
