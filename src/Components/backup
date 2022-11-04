@@ -2,3 +2,115 @@
                         <source src ="assets/images/preview.mp4" type="video/mp4" /> 
                             
                         </video>
+
+                        import React, { useState } from 'react'
+                        import { Link } from 'react-router-dom';
+                        import { FaBars, FaTimes } from 'react-icons/fa';
+                        
+                        
+                        
+                        
+                        
+                        const Header = () => {
+                            const [click, setClick] = useState(false);
+                            const [button, setButton] = useState(true);
+                          
+                            const handleClick = () => setClick(!click);
+                            const closeMobileMenu =() => setClick(false)
+                          
+                            const showButton = () =>{
+                              if(window.innerWidth <= 960){
+                                setButton(false)
+                              } else {
+                                setButton(true)
+                              }
+                            };
+                          
+                            window.addEventListener('resize', showButton);
+                          
+                        
+                          return (
+                            <header id="site-header" className="fixed-top">
+                                <div className="container">
+                                
+                                    <nav className="navbar navbar-expand-lg navbar-light">
+                                  <Link to="/"> {" "}<img className="pix" src="assets/images/kts.png"/></Link>
+                                  {/*                <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                                            aria-label="Toggle navigation">
+                                            <span className="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                                            <span className="navbar-toggler-icon fa icon-close fa-times"></span>
+                                        </button>
+                          */}
+                        
+                                       
+                                      {/*  <div className="collapse navbar-collapse" id="navbarScroll">*/}
+                                            <ul className={click ? 'nav-menu active' : 'nav-menu' }>
+                        
+                                                
+                                                  
+                                                <li className="nav-item"><Link to="/" className='nav-links'onClick={closeMobileMenu}>
+                                                Home
+                                                    
+                                               </Link> </li>
+                        
+                                                
+                                                 
+                                                <li className="nav-item "><Link to="/about" className='nav-links' onClick={closeMobileMenu}>
+                                               About   
+                                                </Link></li>
+                        
+                                                
+                                                  
+                                                <li className="nav-item"><Link to="/services" className='nav-links' onClick={closeMobileMenu}>
+                                              Services</Link></li>
+                        
+                                                
+                                                <li className="nav-item"><Link to="/contact" className='nav-links' onClick={closeMobileMenu}>
+                                                Contact</Link></li>
+                                            </ul>
+                                            <div className='menu-icon' onClick={handleClick}>{click ? <FaTimes /> : <FaBars />}</div>  
+                        
+                                           
+                                       {/* </div>*/}
+                                       {/*  toggle switch for light and dark theme */}
+                                        <div className="cont-ser-position">
+                                            <nav className="navigation">
+                                                <div className="theme-switch-wrapper">
+                                                    <label className="theme-switch" htmlFor="checkbox">
+                                                        <input type="checkbox" id="checkbox" />
+                                                        <div className="mode-container">
+                                                            <i className="gg-sun"></i>
+                                                            <i className="gg-moon"></i>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                        {/* //toggle switch for light and dark theme*/}
+                                    </nav>
+                                </div>
+                            </header>
+                        
+                          )
+                        }
+                        
+                        export default Header
+
+                        <Link to="/"><img src={ Logo } className="pix" /></Link>.
+                        
+                        <ul className="">
+                          <li className="nav-item">
+                              <Link to="/" className="nav-link active" onClick={closeMobileMenu}aria-current="page">Home</Link>
+                          </li>
+                          <li className="nav-item">
+                              <Link to="/about" className="nav-link" onClick={closeMobileMenu}>About</Link>
+                          </li>
+                          <li className="nav-item">
+                              <Link to="/services" className="nav-link" >Services</Link>
+                          </li>
+                          <li className="nav-item">
+                              <Link to="/contact" className="nav-link">Contact</Link>
+                          </li>
+                      </ul>
+                      

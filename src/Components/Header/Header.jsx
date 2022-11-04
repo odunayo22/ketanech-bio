@@ -1,69 +1,92 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import Logo from '../../assets/images/kts.png';
+import './Header.css';
+import { Button } from './Button';
+import { IconContext } from 'react-icons/lib';
+import { FaFacebookF, FaTwitter} from 'react-icons/fa';
+import { AiOutlineMail } from 'react-icons/ai';
+import {  ImLinkedin2 } from 'react-icons/im';
+import { IoLogoGithub, IoMdFingerPrint } from 'react-icons/io';
+
+
 
 
 
 const Header = () => {
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
+
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu =() => setClick(false)
+
+  const showButton = () =>{
+    if(window.innerWidth <= 960){
+      setButton(false)
+    } else {
+      setButton(true)
+    }
+  };
+
+  window.addEventListener('resize', showButton);
+
   return (
-    <header id="site-header" className="fixed-top">
-        <div className="container">
-        
-            <nav className="navbar navbar-expand-lg navbar-light">
-          <Link to="/"> {" "}<img className="pix" src="assets/images/kts.png"/></Link>
-                <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon fa icon-expand fa-bars"></span>
-                    <span className="navbar-toggler-icon fa icon-close fa-times"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarScroll">
-                    <ul className="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll">
 
-                        <Link to="/">
-                            {" "}
-                        <li className="nav-item">
-                        Home
-                            
-                        </li></Link>
+    <div className='fixed-top'>
+      <IconContext.Provider value={{ color: '#fff' }}>
+      <header  className="header">
+    
+        <div className="navbar">      
 
-                        <Link to="/about">
-                            {" "}
-                        <li className="nav-item nav-link">
-                       About
-                            
-                        </li></Link>
+        <Link to="/"><img src={ Logo } className="pix" /></Link>
+         
 
-                        <Link to="/services">
-                            {" "}
-                        <li className="nav-item">
-                      Services</li></Link>
+        <div className='menu-icon' onClick={handleClick}>{click ? <FaTimes /> : <FaBars />}</div>  
 
-                        <Link to="/contact">
-                        <li className="nav-item">
-                        Contact</li></Link>
-                    </ul>
+          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+
+          
                    
-                </div>
-               {/*  toggle switch for light and dark theme */}
-                <div className="cont-ser-position">
-                    <nav className="navigation">
-                        <div className="theme-switch-wrapper">
-                            <label className="theme-switch" htmlFor="checkbox">
-                                <input type="checkbox" id="checkbox" />
-                                <div className="mode-container">
-                                    <i className="gg-sun"></i>
-                                    <i className="gg-moon"></i>
-                                </div>
-                            </label>
-                        </div>
-                    </nav>
-                </div>
-                {/* //toggle switch for light and dark theme*/}
-            </nav>
+                    <li className="nav-item"> <Link to="/" className='nav-links'  onClick={closeMobileMenu}>Home</Link></li> 
+                  
+                    <li className="nav-item"> <Link to="/About"  className='nav-links' onClick={closeMobileMenu}>About</Link></li>
+
+                    <li className="nav-item"> <Link to="/Services"  className='nav-links' onClick={closeMobileMenu}>Services</Link></li>
+                                  
+                
+                 
+                    <li className="nav-item"><Link to="/Contact"  className='nav-links' onClick={closeMobileMenu}>Contact</Link></li> 
+
+                    {/*  
+                    <li className="nav-btn">
+                    {button ? 
+                    (<Link to="/Signup" className="btn-link" onClick={closeMobileMenu}>
+                        <Button buttonStyle='btn--outline'>SIGN UP</Button>
+                    </Link>
+                    ): (<Link to="/Signup" className="btn-link" onClick={closeMobileMenu}>
+                          <Button buttonStyle='btn--outline' buttonSize='btn--mobile'>Sign up
+
+                          </Button>
+                    </Link>)} 
+                    </li>
+                    */}
+
+          </ul>
+          
+               
+                
+         
+                   
         </div>
-    </header>
+        <marquee className="marq">We Offer the best @  Ketanech Technology Services</marquee>   
+      </header>
+      </IconContext.Provider>
+    </div>
 
   )
 }
 
 export default Header
+
+

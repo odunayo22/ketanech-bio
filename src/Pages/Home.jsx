@@ -5,7 +5,7 @@ import Experience from '../Components/Experience';
 import Intro from '../Components/Intro';
 import Portfolio from '../Components/Portfolio';
 import Project from '../Components/Project';
-
+import Slider from '../Components/Slider/Slider';
 import Footer from '../Components/Footer';
 
 
@@ -19,6 +19,7 @@ function Home() {
         <Intro />
         <Portfolio/>
         <Project />
+        <Slider />
       
         <Footer />
        

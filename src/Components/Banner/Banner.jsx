@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Banner() {
   return (
@@ -12,7 +13,7 @@ function Banner() {
                     <p className="banner-sub me-md-5">We love to work with Electronics devices
                     </p>
                     <div className="d-flex align-items-center buttons-banner mt-sm-5 mt-4">
-                        <a href="about.html" className="btn btn-style me-2">Hire KTS</a>
+                        <Link to="/contact"><a className="btn btn-style me-2">Hire KTS</a></Link>
                     </div>
                 </div>
                 <div className="col-md-6">

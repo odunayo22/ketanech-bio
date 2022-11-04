@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useRef} from 'react';
+import emailjs from 'emailjs-com';
 import Footer from '../Components/Footer';
 
-import { useRef } from 'react';
-import emailjs from 'emailjs-com';
 
 const  Contact = () => {
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_s1vl0ma', 'template_2gncgoh', form.current, 'WGAe1GYp6AvKKPmDu');
+          
+        e.target.reset()
+    }
   return (
     <div>
        
@@ -69,13 +77,13 @@ const  Contact = () => {
                     </ul>
                 </div>
                 <div className="col-md-6 contact-right mt-md-0 mt-5 ps-lg-0">
-                    <form action="https://sendmail.odun4code@gmail.com" method="post" className="signin-form">
+                    <form ref={form} onSubmit={sendEmail} className="signin-form">
                         <div className="input-grids">
                             <input type="text" name="name" id="w3lName" placeholder="Your Name*"
                                 className="contact-input" required="" />
                             <input type="email" name="email" id="w3lSender" placeholder="Your Email*"
                                 className="contact-input" required="" />
-                            <input type="text" name="w3lSubect" id="w3lSubect" placeholder="Subject*"
+                            <input type="text" name="text" id="w3lSubect" placeholder="Subject*"
                                 className="contact-input" required="" />
                            
                         </div>
@@ -83,7 +91,7 @@ const  Contact = () => {
                             <textarea name="message" id="w3lMessage" placeholder="Type your message here*"
                                 required=""></textarea>
                         </div>
-                        <button className="btn btn-style">Send Message</button>
+                        <button type='submit'className="btn btn-style">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -96,7 +104,7 @@ const  Contact = () => {
        src="https://www.google.com/maps/embed?place/Omidiran+Gardens/@7.8043071,4.580403,18z/data=!4m9!1m2!2m1!1sOmidiran+Gardens!3m5!1s0x1037888aba1d28eb:0xab549e4428b7646e!8m2!3d7.8040088!4d4.5817735!15sChBPbWlkaXJhbiBHYXJkZW5zkgEHbG9kZ2luZw?hl=en-NG"width="100%" height="400" frameBorder="0" allowFullScreen=""></iframe>
     </div>
 
-<Footer />
+    <Footer />
     </div>
   )
 }
